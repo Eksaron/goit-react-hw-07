@@ -1,20 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  searchText: "",
-};
-
 const searchFilterSlice = createSlice({
-  name: "searchFilter",
-  initialState,
+  name: "filter",
+  initialState: { query: "" },
   reducers: {
-    changeFilter: (state, action) => {
-      state.searchText = action.payload;
+    changeFilter: (state, { payload }) => {
+      state.query = payload;
     },
   },
 });
 
 export const { changeFilter } = searchFilterSlice.actions;
-export const selectNameFilter = (state) => state.searchFilter.searchText;
-
-export default searchFilterSlice.reducer;
+export const selectNameFilter = (state) => state.filter.query;
+export const filterReducer = searchFilterSlice.reducer;
