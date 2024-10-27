@@ -7,18 +7,14 @@ const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const search = useSelector(selectNameFilter);
 
-  let data = contacts;
-  if (search) {
-    data = contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }
-
   return (
     <>
-      ContactList
+      <p>
+        <b>ContactList:</b> ({contacts?.length}) of {search}
+      </p>
+
       <ul>
-        {data.map((item) => (
+        {contacts?.map((item) => (
           <Contact key={item.id} contact={item} />
         ))}
       </ul>
